@@ -4,19 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="62367560-9f93-40bd-839e-c94747660fda" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/kursach/People.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/kursach/PeopleCreater.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/kursach/Support.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/kursach/UserData.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/kursach/UsersPage.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/kursach/APITests.java" afterDir="false" />
+    <list default="true" id="62367560-9f93-40bd-839e-c94747660fda" name="Changes" comment="version 1.0">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/kursach/APITests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/kursach/APITests.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,9 +38,10 @@
     "TestNG.APITests.createUser.executor": "Run",
     "TestNG.APITests.executor": "Run",
     "TestNG.APITests.sinov.executor": "Run",
+    "TestNG.APITests.task1.executor": "Run",
     "TestNG.APITests.testCase.executor": "Run",
     "TestNG.APITests.testUserDetails.executor": "Run",
-    "TestNG.APITests.testUserFromList.executor": "Run",
+    "TestNG.APITests.testUserFromList.executor": "Debug",
     "TestNG.APITests.userById.executor": "Run",
     "TestNG.APITests.userFromList.executor": "Run",
     "TestNG.APITests.userFromPages (1).executor": "Run",
@@ -64,7 +55,7 @@
     "settings.editor.selected.configurable": "reference.settings.project.maven.repository.indices"
   }
 }]]></component>
-  <component name="RunManager" selected="TestNG.APITests">
+  <component name="RunManager" selected="TestNG.APITests.testUserFromResponse">
     <configuration name="APITests" type="TestNG" temporary="true" nameIsGenerated="true">
       <module name="kursach2024-2Part2" />
       <extension name="coverage">
@@ -76,6 +67,24 @@
       <option name="PACKAGE_NAME" value="com.kursach" />
       <option name="MAIN_CLASS_NAME" value="com.kursach.APITests" />
       <option name="TEST_OBJECT" value="CLASS" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="APITests.task1" type="TestNG" temporary="true" nameIsGenerated="true">
+      <module name="kursach2024-2Part2" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.kursach.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.kursach" />
+      <option name="MAIN_CLASS_NAME" value="com.kursach.APITests" />
+      <option name="METHOD_NAME" value="task1" />
+      <option name="TEST_OBJECT" value="METHOD" />
       <properties />
       <listeners />
       <method v="2">
@@ -118,7 +127,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="APITests.userFromList" type="TestNG" temporary="true" nameIsGenerated="true">
+    <configuration name="APITests.testUserFromResponse" type="TestNG" temporary="true" nameIsGenerated="true">
       <module name="kursach2024-2Part2" />
       <extension name="coverage">
         <pattern>
@@ -128,25 +137,7 @@
       </extension>
       <option name="PACKAGE_NAME" value="com.kursach" />
       <option name="MAIN_CLASS_NAME" value="com.kursach.APITests" />
-      <option name="METHOD_NAME" value="userFromList" />
-      <option name="TEST_OBJECT" value="METHOD" />
-      <properties />
-      <listeners />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="APITests.userFromPages" type="TestNG" temporary="true" nameIsGenerated="true">
-      <module name="kursach2024-2Part2" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.kursach.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.kursach" />
-      <option name="MAIN_CLASS_NAME" value="com.kursach.APITests" />
-      <option name="METHOD_NAME" value="userFromPages" />
+      <option name="METHOD_NAME" value="testUserFromResponse" />
       <option name="TEST_OBJECT" value="METHOD" />
       <properties />
       <listeners />
@@ -156,11 +147,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="TestNG.APITests.testUserFromResponse" />
+        <item itemvalue="TestNG.APITests.testUserFromList" />
+        <item itemvalue="TestNG.APITests.task1" />
         <item itemvalue="TestNG.APITests" />
         <item itemvalue="TestNG.APITests.testUserDetails" />
-        <item itemvalue="TestNG.APITests.userFromList" />
-        <item itemvalue="TestNG.APITests.userFromPages" />
-        <item itemvalue="TestNG.APITests.testUserFromList" />
       </list>
     </recent_temporary>
   </component>
@@ -173,6 +164,30 @@
       <option name="presentableId" value="Default" />
       <updated>1718389695623</updated>
     </task>
+    <task id="LOCAL-00001" summary="version 1.0">
+      <option name="closed" value="true" />
+      <created>1718458908146</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1718458908146</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="version 1.0" />
+    <option name="LAST_COMMIT_MESSAGE" value="version 1.0" />
   </component>
 </project>
