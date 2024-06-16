@@ -44,6 +44,7 @@ public class APITests extends BaseTest {
         assertFalse(usersPage.getData().isEmpty());
         assertEquals(usersPage.getData().get(2).getFirst_name(), "Tobias");
         assertEquals(usersPage.getData().get(2).getLast_name(), "Funke");
+
     }
 
     @Test
