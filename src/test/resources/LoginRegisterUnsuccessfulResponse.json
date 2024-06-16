@@ -1,0 +1,11 @@
+{
+  "$schema": "https://json-schema.org/draft-09/schema#",
+  "title": "Unsuccessful registration/login",
+  "type": "object",
+  "properties": {
+    "error": {
+      "type": "string"
+    }
+  },
+  "required": ["error"]
+}

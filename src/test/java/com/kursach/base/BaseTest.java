@@ -1,10 +1,11 @@
 package com.kursach.base;
 
+import com.kursach.People;
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
 import io.restassured.response.ValidatableResponse;
 import io.restassured.specification.RequestSpecification;
-import org.testng.annotations.BeforeClass;
+import org.junit.BeforeClass;
 
 import static io.restassured.RestAssured.given;
 
@@ -46,12 +47,40 @@ public class BaseTest {
                 .log().all()
                 .statusCode(code);
     }
-    static ValidatableResponse checkStatusCodePost(Object body, int code) {
+    public static ValidatableResponse checkStatusCodePost(Object body, String url, int code) {
         return given(requestSpecification)
+                .contentType("application/json")
                 .body(body)
-                .post()
+                .post(url)
                 .then()
                 .log().all()
+                .statusCode(code);
+    }
+    public static ValidatableResponse checkStatusCodePut(People user, String url, int code) {
+        return given(requestSpecification)
+                .contentType("application/json")
+                .body(user)
+                .put(url)
+                .then()
+                .log().all()
+                .statusCode(code);
+    }
+
+    public static ValidatableResponse checkStatusCodePatch(People user, String url, int code) {
+        return given(requestSpecification)
+                .contentType("application/json")
+                .body(user)
+                .patch(url)
+                .then()
+                .log().all()
+                .statusCode(code);
+    }
+
+    public static ValidatableResponse deleteUser(String url, int code){
+        return given(requestSpecification)
+                .when()
+                .delete(url)
+                .then()
                 .statusCode(code);
     }
 
@@ -61,6 +90,18 @@ public class BaseTest {
                 .then()
                 .log().all()
                 .statusCode(code);
+    }
+
+    public static ValidatableResponse postRegister(String requestBody, String url, int code){
+        return given(requestSpecification)
+                .contentType("application/json")
+                .body(requestBody)
+                .when()
+                .post(url)
+                .then()
+                .log().all()
+                .statusCode(code);
+
     }
 
     

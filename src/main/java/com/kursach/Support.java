@@ -16,4 +16,12 @@ public class Support {
         this.text = text;
     }
 
+    @Override
+    public String toString() {
+        return "Support{" +
+                "url='" + url + '\'' +
+                ", text='" + text + '\'' +
+                '}';
+    }
+
 }

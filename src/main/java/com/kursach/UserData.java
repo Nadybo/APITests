@@ -13,9 +13,11 @@ public class UserData {
     private Integer id;
     private String email;
     @JsonProperty("first_name")
-    String first_name;
+    private String first_name;
     @JsonProperty("last_name")
-    String last_name;
-    String avatar;
+    private String last_name;
+    private String avatar;
+
+
 
 }

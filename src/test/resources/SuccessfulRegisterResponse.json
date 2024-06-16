@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft-08/schema#",
+  "title": "Successful registration",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "integer"
+    },
+    "token": {
+      "type": "string"
+    }
+  },
+  "required": ["id", "token"]
+}

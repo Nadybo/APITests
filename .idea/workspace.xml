@@ -4,17 +4,35 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="62367560-9f93-40bd-839e-c94747660fda" name="Changes" comment="version 1.3">
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/kursach/base/BaseTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/resources/UsersSchema.json" afterDir="false" />
+    <list default="true" id="62367560-9f93-40bd-839e-c94747660fda" name="Changes" comment="version 1.6">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/kursach/ColorData.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/kursach/RegisterLoginRequest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/kursach/RegisterLoginResponse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/kursach/managers/DriverManager.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/kursach/managers/ManagerInitiallization.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/kursach/managers/ManagerPropertiesTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/kursach/pages/BasePage.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/kursach/pages/ReqresPage.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/kursach/utils/Constatnt.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/kursach/utils/DateFormatter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/log4j.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/kursach/FrontReqresPageTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/resources/ColorDataList.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/resources/ColorSchema.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/resources/CreateUser.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/resources/ListUserSchema.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/resources/LoginRegisterUnsuccessfulResponse.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/resources/SuccessfulLoginResponse.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/resources/SuccessfulRegisterResponse.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/resources/UserData.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/resources/UserUpdate.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/kursach/People.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/kursach/People.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/kursach/PeopleCreater.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/kursach/PeopleCreater.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/kursach/Support.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/kursach/Support.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/kursach/UserData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/kursach/UserData.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/kursach/UsersPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/kursach/UsersPage.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/com/kursach/APITests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/kursach/APITests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/kursach/base/BaseTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/kursach/base/BaseTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -42,10 +60,27 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "JUnit.APITests.executor": "Run",
+    "JUnit.FrontReqresPageTest.executor": "Run",
+    "JUnit.FrontReqresPageTest.test.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "TestNG.APITests.checkListUsersDTO.executor": "Run",
+    "TestNG.APITests.checkListUsersValidate.executor": "Run",
     "TestNG.APITests.createUser.executor": "Run",
+    "TestNG.APITests.deleteUser_thenSuccess.executor": "Run",
     "TestNG.APITests.executor": "Run",
+    "TestNG.APITests.getDelayedResponse.executor": "Run",
+    "TestNG.APITests.getResource.executor": "Run",
+    "TestNG.APITests.getResourceNotFound.executor": "Run",
+    "TestNG.APITests.listRecource.executor": "Run",
+    "TestNG.APITests.loginUser.executor": "Run",
+    "TestNG.APITests.patch.executor": "Run",
+    "TestNG.APITests.putUser (1).executor": "Run",
+    "TestNG.APITests.putUser.executor": "Run",
+    "TestNG.APITests.registerUser.executor": "Run",
+    "TestNG.APITests.registerUser1.executor": "Run",
+    "TestNG.APITests.singleList (1).executor": "Debug",
+    "TestNG.APITests.singleList.executor": "Run",
     "TestNG.APITests.sinov.executor": "Run",
     "TestNG.APITests.task1 (1).executor": "Debug",
     "TestNG.APITests.task1.executor": "Run",
@@ -53,6 +88,8 @@
     "TestNG.APITests.testUserDetails.executor": "Run",
     "TestNG.APITests.testUserFromList.executor": "Run",
     "TestNG.APITests.testUserFromResponse.executor": "Run",
+    "TestNG.APITests.unsuccesLoginUser.executor": "Run",
+    "TestNG.APITests.unsuccesRegisterUser.executor": "Run",
     "TestNG.APITests.userById.executor": "Run",
     "TestNG.APITests.userFromList.executor": "Run",
     "TestNG.APITests.userFromPages (1).executor": "Run",
@@ -69,8 +106,8 @@
     "settings.editor.selected.configurable": "preferences.pluginManager"
   }
 }]]></component>
-  <component name="RunManager" selected="TestNG.APITests.checkListUsersDTO">
-    <configuration name="APITests.checkListUsersDTO" type="TestNG" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="TestNG.APITests">
+    <configuration name="APITests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="kursach2024-2Part2" />
       <extension name="coverage">
         <pattern>
@@ -80,7 +117,39 @@
       </extension>
       <option name="PACKAGE_NAME" value="com.kursach" />
       <option name="MAIN_CLASS_NAME" value="com.kursach.APITests" />
-      <option name="METHOD_NAME" value="checkListUsersDTO" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="APITests" type="TestNG" temporary="true" nameIsGenerated="true">
+      <module name="kursach2024-2Part2" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.kursach.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.kursach" />
+      <option name="MAIN_CLASS_NAME" value="com.kursach.APITests" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="APITests.getResource" type="TestNG" temporary="true" nameIsGenerated="true">
+      <module name="kursach2024-2Part2" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.kursach.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.kursach" />
+      <option name="MAIN_CLASS_NAME" value="com.kursach.APITests" />
+      <option name="METHOD_NAME" value="getResource" />
       <option name="TEST_OBJECT" value="METHOD" />
       <properties />
       <listeners />
@@ -88,7 +157,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="APITests.createUser" type="TestNG" temporary="true" nameIsGenerated="true">
+    <configuration name="APITests.getResourceNotFound" type="TestNG" temporary="true" nameIsGenerated="true">
       <module name="kursach2024-2Part2" />
       <extension name="coverage">
         <pattern>
@@ -98,7 +167,7 @@
       </extension>
       <option name="PACKAGE_NAME" value="com.kursach" />
       <option name="MAIN_CLASS_NAME" value="com.kursach.APITests" />
-      <option name="METHOD_NAME" value="createUser" />
+      <option name="METHOD_NAME" value="getResourceNotFound" />
       <option name="TEST_OBJECT" value="METHOD" />
       <properties />
       <listeners />
@@ -106,7 +175,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="APITests.task1" type="TestNG" temporary="true" nameIsGenerated="true">
+    <configuration name="APITests.singleList" type="TestNG" temporary="true" nameIsGenerated="true">
       <module name="kursach2024-2Part2" />
       <extension name="coverage">
         <pattern>
@@ -116,43 +185,7 @@
       </extension>
       <option name="PACKAGE_NAME" value="com.kursach" />
       <option name="MAIN_CLASS_NAME" value="com.kursach.APITests" />
-      <option name="METHOD_NAME" value="task1" />
-      <option name="TEST_OBJECT" value="METHOD" />
-      <properties />
-      <listeners />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="APITests.testUserFromResponse" type="TestNG" temporary="true" nameIsGenerated="true">
-      <module name="kursach2024-2Part2" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.kursach.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.kursach" />
-      <option name="MAIN_CLASS_NAME" value="com.kursach.APITests" />
-      <option name="METHOD_NAME" value="testUserFromResponse" />
-      <option name="TEST_OBJECT" value="METHOD" />
-      <properties />
-      <listeners />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="APITests.userNotFound" type="TestNG" temporary="true" nameIsGenerated="true">
-      <module name="kursach2024-2Part2" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.kursach.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.kursach" />
-      <option name="MAIN_CLASS_NAME" value="com.kursach.APITests" />
-      <option name="METHOD_NAME" value="userNotFound" />
+      <option name="METHOD_NAME" value="singleList" />
       <option name="TEST_OBJECT" value="METHOD" />
       <properties />
       <listeners />
@@ -162,11 +195,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="TestNG.APITests.checkListUsersDTO" />
-        <item itemvalue="TestNG.APITests.task1" />
-        <item itemvalue="TestNG.APITests.testUserFromResponse" />
-        <item itemvalue="TestNG.APITests.createUser" />
-        <item itemvalue="TestNG.APITests.userNotFound" />
+        <item itemvalue="TestNG.APITests" />
+        <item itemvalue="TestNG.APITests.getResourceNotFound" />
+        <item itemvalue="TestNG.APITests.getResource" />
+        <item itemvalue="TestNG.APITests.singleList" />
+        <item itemvalue="JUnit.APITests" />
       </list>
     </recent_temporary>
   </component>
@@ -203,7 +236,23 @@
       <option name="project" value="LOCAL" />
       <updated>1718473822832</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="version 1.5">
+      <option name="closed" value="true" />
+      <created>1718521717777</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1718521717777</updated>
+    </task>
+    <task id="LOCAL-00005" summary="version 1.6">
+      <option name="closed" value="true" />
+      <created>1718522570812</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1718522570812</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -221,6 +270,8 @@
     <MESSAGE value="version 1.0" />
     <MESSAGE value="version 1.1" />
     <MESSAGE value="version 1.3" />
-    <option name="LAST_COMMIT_MESSAGE" value="version 1.3" />
+    <MESSAGE value="version 1.5" />
+    <MESSAGE value="version 1.6" />
+    <option name="LAST_COMMIT_MESSAGE" value="version 1.6" />
   </component>
 </project>
