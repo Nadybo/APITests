@@ -4,36 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="62367560-9f93-40bd-839e-c94747660fda" name="Changes" comment="version 1.6">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/kursach/ColorData.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/kursach/RegisterLoginRequest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/kursach/RegisterLoginResponse.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/kursach/managers/DriverManager.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/kursach/managers/ManagerInitiallization.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/kursach/managers/ManagerPropertiesTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/kursach/pages/BasePage.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/kursach/pages/ReqresPage.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/kursach/utils/Constatnt.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/kursach/utils/DateFormatter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/log4j.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/kursach/FrontReqresPageTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/resources/ColorDataList.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/resources/ColorSchema.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/resources/CreateUser.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/resources/ListUserSchema.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/resources/LoginRegisterUnsuccessfulResponse.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/resources/SuccessfulLoginResponse.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/resources/SuccessfulRegisterResponse.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/resources/UserData.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/resources/UserUpdate.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/kursach/Support.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/kursach/Support.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/kursach/UserData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/kursach/UserData.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/kursach/APITests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/kursach/APITests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/kursach/base/BaseTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/kursach/base/BaseTest.java" afterDir="false" />
-    </list>
+    <list default="true" id="62367560-9f93-40bd-839e-c94747660fda" name="Changes" comment="version 2.0" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -58,54 +29,54 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "JUnit.APITests.executor": "Run",
-    "JUnit.FrontReqresPageTest.executor": "Run",
-    "JUnit.FrontReqresPageTest.test.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "TestNG.APITests.checkListUsersDTO.executor": "Run",
-    "TestNG.APITests.checkListUsersValidate.executor": "Run",
-    "TestNG.APITests.createUser.executor": "Run",
-    "TestNG.APITests.deleteUser_thenSuccess.executor": "Run",
-    "TestNG.APITests.executor": "Run",
-    "TestNG.APITests.getDelayedResponse.executor": "Run",
-    "TestNG.APITests.getResource.executor": "Run",
-    "TestNG.APITests.getResourceNotFound.executor": "Run",
-    "TestNG.APITests.listRecource.executor": "Run",
-    "TestNG.APITests.loginUser.executor": "Run",
-    "TestNG.APITests.patch.executor": "Run",
-    "TestNG.APITests.putUser (1).executor": "Run",
-    "TestNG.APITests.putUser.executor": "Run",
-    "TestNG.APITests.registerUser.executor": "Run",
-    "TestNG.APITests.registerUser1.executor": "Run",
-    "TestNG.APITests.singleList (1).executor": "Debug",
-    "TestNG.APITests.singleList.executor": "Run",
-    "TestNG.APITests.sinov.executor": "Run",
-    "TestNG.APITests.task1 (1).executor": "Debug",
-    "TestNG.APITests.task1.executor": "Run",
-    "TestNG.APITests.testCase.executor": "Run",
-    "TestNG.APITests.testUserDetails.executor": "Run",
-    "TestNG.APITests.testUserFromList.executor": "Run",
-    "TestNG.APITests.testUserFromResponse.executor": "Run",
-    "TestNG.APITests.unsuccesLoginUser.executor": "Run",
-    "TestNG.APITests.unsuccesRegisterUser.executor": "Run",
-    "TestNG.APITests.userById.executor": "Run",
-    "TestNG.APITests.userFromList.executor": "Run",
-    "TestNG.APITests.userFromPages (1).executor": "Run",
-    "TestNG.APITests.userFromPages.executor": "Run",
-    "TestNG.APITests.userFromPages1.executor": "Run",
-    "TestNG.APITests.userNotFound.executor": "Debug",
-    "dart.analysis.tool.window.visible": "false",
-    "git-widget-placeholder": "main",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "G:/kursach2024-2",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0",
-    "settings.editor.selected.configurable": "preferences.pluginManager"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;JUnit.APITests.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.FrontReqresPageTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.FrontReqresPageTest.test.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;TestNG.APITests.checkListUsersDTO.executor&quot;: &quot;Run&quot;,
+    &quot;TestNG.APITests.checkListUsersValidate.executor&quot;: &quot;Run&quot;,
+    &quot;TestNG.APITests.createUser.executor&quot;: &quot;Run&quot;,
+    &quot;TestNG.APITests.deleteUser_thenSuccess.executor&quot;: &quot;Run&quot;,
+    &quot;TestNG.APITests.executor&quot;: &quot;Run&quot;,
+    &quot;TestNG.APITests.getDelayedResponse.executor&quot;: &quot;Run&quot;,
+    &quot;TestNG.APITests.getResource.executor&quot;: &quot;Run&quot;,
+    &quot;TestNG.APITests.getResourceNotFound.executor&quot;: &quot;Run&quot;,
+    &quot;TestNG.APITests.listRecource.executor&quot;: &quot;Run&quot;,
+    &quot;TestNG.APITests.loginUser.executor&quot;: &quot;Run&quot;,
+    &quot;TestNG.APITests.patch.executor&quot;: &quot;Run&quot;,
+    &quot;TestNG.APITests.putUser (1).executor&quot;: &quot;Run&quot;,
+    &quot;TestNG.APITests.putUser.executor&quot;: &quot;Run&quot;,
+    &quot;TestNG.APITests.registerUser.executor&quot;: &quot;Run&quot;,
+    &quot;TestNG.APITests.registerUser1.executor&quot;: &quot;Run&quot;,
+    &quot;TestNG.APITests.singleList (1).executor&quot;: &quot;Debug&quot;,
+    &quot;TestNG.APITests.singleList.executor&quot;: &quot;Run&quot;,
+    &quot;TestNG.APITests.sinov.executor&quot;: &quot;Run&quot;,
+    &quot;TestNG.APITests.task1 (1).executor&quot;: &quot;Debug&quot;,
+    &quot;TestNG.APITests.task1.executor&quot;: &quot;Run&quot;,
+    &quot;TestNG.APITests.testCase.executor&quot;: &quot;Run&quot;,
+    &quot;TestNG.APITests.testUserDetails.executor&quot;: &quot;Run&quot;,
+    &quot;TestNG.APITests.testUserFromList.executor&quot;: &quot;Run&quot;,
+    &quot;TestNG.APITests.testUserFromResponse.executor&quot;: &quot;Run&quot;,
+    &quot;TestNG.APITests.unsuccesLoginUser.executor&quot;: &quot;Run&quot;,
+    &quot;TestNG.APITests.unsuccesRegisterUser.executor&quot;: &quot;Run&quot;,
+    &quot;TestNG.APITests.userById.executor&quot;: &quot;Run&quot;,
+    &quot;TestNG.APITests.userFromList.executor&quot;: &quot;Run&quot;,
+    &quot;TestNG.APITests.userFromPages (1).executor&quot;: &quot;Run&quot;,
+    &quot;TestNG.APITests.userFromPages.executor&quot;: &quot;Run&quot;,
+    &quot;TestNG.APITests.userFromPages1.executor&quot;: &quot;Run&quot;,
+    &quot;TestNG.APITests.userNotFound.executor&quot;: &quot;Debug&quot;,
+    &quot;dart.analysis.tool.window.visible&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;G:/kursach2024-2&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected="TestNG.APITests">
     <configuration name="APITests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="kursach2024-2Part2" />
@@ -272,6 +243,7 @@
     <MESSAGE value="version 1.3" />
     <MESSAGE value="version 1.5" />
     <MESSAGE value="version 1.6" />
-    <option name="LAST_COMMIT_MESSAGE" value="version 1.6" />
+    <MESSAGE value="version 2.0" />
+    <option name="LAST_COMMIT_MESSAGE" value="version 2.0" />
   </component>
 </project>
