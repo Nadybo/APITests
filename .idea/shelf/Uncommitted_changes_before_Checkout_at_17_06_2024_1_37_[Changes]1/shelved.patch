@@ -1,0 +1,152 @@
+Index: src/test/java/com/kursach/APITests.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.kursach;\r\n\r\n\r\nimport com.kursach.base.BaseTest;\r\nimport io.qameta.allure.junit4.DisplayName;\r\nimport io.restassured.module.jsv.JsonSchemaValidator;\r\nimport org.testng.annotations.BeforeClass;\r\nimport org.testng.annotations.Test;\r\n\r\nimport java.util.List;\r\n\r\n\r\nimport static org.hamcrest.MatcherAssert.assertThat;\r\nimport static org.hamcrest.Matchers.is;\r\nimport static org.hamcrest.Matchers.isEmptyOrNullString;\r\nimport static org.hamcrest.core.IsEqual.equalTo;\r\nimport static org.testng.Assert.*;\r\n\r\n\r\npublic class APITests extends BaseTest {\r\n\r\n    @BeforeClass\r\n    public static void setUo(){\r\n        BaseTest.setUp();\r\n        requestSpecification.basePath(\"/users\");\r\n    }\r\n\r\n    @Test\r\n    @DisplayName(\"Валидация списка пользователей через схему JSON\")\r\n    public void checkListUsersValidate() {\r\n        sendGetRequest(200)\r\n                .assertThat().body(JsonSchemaValidator.matchesJsonSchemaInClasspath(\"UsersSchema.json\"));\r\n    }\r\n\r\n    @Test\r\n    @DisplayName(\"Проверка данных пользователей через DTO\")\r\n    public void checkListUsersDTO() {\r\n        UsersPage usersPage = checkStatusCodeGet(\"https://reqres.in/api/users?page=2\", 200)\r\n                    .extract().as(UsersPage.class);\r\n        assertEquals(usersPage.getPage().intValue(), 2);\r\n        assertEquals(usersPage.getPer_page().intValue(), 6);\r\n        assertEquals(usersPage.getTotal().intValue(), 12);\r\n        assertEquals(usersPage.getTotal_pages().intValue(), 2);\r\n        assertFalse(usersPage.getData().isEmpty());\r\n        assertEquals(usersPage.getData().get(2).getFirst_name(), \"Tobias\");\r\n        assertEquals(usersPage.getData().get(2).getLast_name(), \"Funke\");\r\n\r\n    }\r\n\r\n    @Test\r\n    @DisplayName(\"Проверка данных одного пользователя\")\r\n    public void testUserFromResponse() {\r\n        UserData userData = checkStatusCodeGet(\"https://reqres.in/api/users/2\", 200)\r\n                .extract().body().jsonPath().getObject(\"data\", UserData.class);\r\n        assertThat(\"Идентификатор пользователя должен быть равен 2\", userData.getId(), is(2));\r\n        assertThat(\"Адрес электронной почты пользователя должен быть janet.weaver@reqres.in\", userData.getEmail(), is(\"janet.weaver@reqres.in\"));\r\n        assertThat(\"Имя пользователя должно быть Джанет\", userData.getFirst_name(), is(\"Janet\"));\r\n        assertThat(\"Фамилия пользователя должна быть Weaver\", userData.getLast_name(), is(\"Weaver\"));\r\n        assertThat(\"Аватар пользователя должен быть корректным\", userData.getAvatar(), is(\"https://reqres.in/img/faces/2-image.jpg\"));\r\n    }\r\n\r\n   @Test\r\n   @DisplayName(\"Проверка данных одного ресурса\")\r\n    public void singleList() {\r\n        ColorData resource = checkStatusCodeGet(\"https://reqres.in/api/unknown/2\", 200)\r\n                .body(JsonSchemaValidator.matchesJsonSchemaInClasspath(\"ColorSchema.json\"))\r\n                .extract().jsonPath().getObject(\"data\", ColorData.class);\r\n\r\n        assertThat(\"\",resource.getId(),is(2));\r\n        assertThat(\"\", resource.getName(), is(\"fuchsia rose\"));\r\n        assertThat(\"\", resource.getYear(), is(2001));\r\n        assertThat(\"\", resource.getColor(), is(\"#C74375\"));\r\n        assertThat(\"\", resource.getPantone_value(),is(\"17-2031\"));\r\n    }\r\n\r\n    @Test\r\n    @DisplayName(\"Проверка отсутствия ресурса\")\r\n    public void singleListNotFound() {\r\n        checkStatusCodeGet(\"https://reqres.in/api/unknown/23\", 404)\r\n                .body(equalTo(\"{}\"));\r\n    }\r\n\r\n    @Test\r\n    @DisplayName(\"Проверка отсутствия пользователя\")\r\n    public void userNotFound() {\r\n        String responseBody = checkStatusCodeGet(\"https://reqres.in/api/users/22\", 404)\r\n                        .extract()\r\n                        .asString();\r\n        assertEquals(\"{}\", responseBody, \"Expected response body to be empty JSON object {}\");\r\n    }\r\n\r\n    @Test\r\n    @DisplayName(\"Создание пользователя через эндпоинт /api/users POST\")\r\n    public void createUser(){\r\n        People people = new People(\"morpheus\", \"leader\");\r\n        PeopleCreater peopleCreater = checkStatusCodePost(people,\"https://reqres.in/api/users\",201)\r\n                .extract()\r\n                .as(PeopleCreater.class);\r\n        assertEquals(peopleCreater.getName(),people.getName());\r\n        assertEquals(peopleCreater.getJob(), people.getJob());\r\n    }\r\n\r\n    @Test\r\n    @DisplayName(\"Получение списка ресурсов\")\r\n    public void listRecource(){\r\n        List<UsersPage> usersPageList =  checkStatusCodeGet(\"https://reqres.in/api/unknown\",200)\r\n                .extract().jsonPath().getList(\"data\", UsersPage.class);\r\n        assertNotNull(usersPageList, \"Список не должен быть null\");\r\n        assertFalse(usersPageList.isEmpty(), \"Список не должен быть пустым\");\r\n        assertEquals(6, usersPageList.size(), \"Ожидалось три элемента в списке\");\r\n        System.out.println(usersPageList);\r\n    }\r\n\r\n\r\n    @Test\r\n    @DisplayName(\"Обновление пользователя через PUT\")\r\n    public void putUser(){\r\n        People people = new People(\"morpheus\",\"zion resident\");\r\n        checkStatusCodePut(people,\"https://reqres.in/api/users/2\",200)\r\n                .body(\"name\", equalTo(\"morpheus\"))\r\n                .body(\"job\", equalTo(\"zion resident\"));\r\n    }\r\n\r\n    @Test\r\n    @DisplayName(\"Частичное обновление пользователя через PATCH\")\r\n    public void patch(){\r\n        People people = new People(\"morpheus\",\"zion resident\");\r\n        checkStatusCodePatch(people,\"https://reqres.in/api/users/2\",200)\r\n                .body(\"name\", equalTo(\"morpheus\"))\r\n                .body(\"job\", equalTo(\"zion resident\"));\r\n    }\r\n\r\n    @Test\r\n    @DisplayName(\"Удаление пользователя\")\r\n    public void deleteUser_thenSuccess() {\r\n        deleteUser (\"https://reqres.in/api/users/2\",204)\r\n                .body(isEmptyOrNullString());\r\n    }\r\n\r\n    @Test\r\n    @DisplayName(\"Регистрация пользователя\")\r\n    public void  registerUser(){\r\n        String requestBody = \"{\\\"email\\\": \\\"eve.holt@reqres.in\\\", \\\"password\\\": \\\"pistol\\\"}\";\r\n        postRegister(requestBody,\"https://reqres.in/api/register\",200)\r\n                .body(\"id\", equalTo(4))\r\n                .body(\"token\", equalTo(\"QpwL5tke4Pnpja7X4\"));\r\n    }\r\n\r\n    @Test\r\n    @DisplayName(\"Ошибка при регистрации пользователя\")\r\n    public void  unsuccesRegisterUser(){\r\n        String requestBody = \"{\\\"email\\\": \\\"sydney@fife\\\"}\";\r\n        postRegister(requestBody,\"https://reqres.in/api/register\",400)\r\n                .body(\"error\", equalTo(\"Missing password\"));\r\n    }\r\n\r\n    @Test\r\n    @DisplayName(\"Вход пользователя\")\r\n    public void  loginUser(){\r\n        String requestBody = \"{\\\"email\\\": \\\"eve.holt@reqres.in\\\", \\\"password\\\": \\\"cityslicka\\\"}\";\r\n        postRegister(requestBody,\"https://reqres.in/api/login\",200)\r\n                .body(\"token\", equalTo(\"QpwL5tke4Pnpja7X4\"));\r\n    }\r\n\r\n    @Test\r\n    @DisplayName(\"Ошибка при входе пользователя\")\r\n    public void  unsuccesLoginUser(){\r\n        String requestBody = \"{\\\"email\\\": \\\"peter@klaven\\\"}\";\r\n        postRegister(requestBody,\"https://reqres.in/api/login\",400)\r\n                .body(\"error\", equalTo(\"Missing password\"));\r\n    }\r\n\r\n\r\n    @Test\r\n    @DisplayName(\"Получение отложенного ответа\")\r\n    public void getDelayedResponse(){\r\n        UsersPage usersPage = checkStatusCodeGet(\"https://reqres.in/api/users?delay=3\",200)\r\n                .extract().as(UsersPage.class);\r\n        assertNotNull(usersPage, \"Список не должен быть null\");\r\n        System.out.println(usersPage);\r\n    }\r\n\r\n\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/test/java/com/kursach/APITests.java b/src/test/java/com/kursach/APITests.java
+--- a/src/test/java/com/kursach/APITests.java	
++++ b/src/test/java/com/kursach/APITests.java	
+@@ -2,6 +2,7 @@
+ 
+ 
+ import com.kursach.base.BaseTest;
++import io.qameta.allure.Step;
+ import io.qameta.allure.junit4.DisplayName;
+ import io.restassured.module.jsv.JsonSchemaValidator;
+ import org.testng.annotations.BeforeClass;
+@@ -27,6 +28,7 @@
+ 
+     @Test
+     @DisplayName("Валидация списка пользователей через схему JSON")
++    @Step
+     public void checkListUsersValidate() {
+         sendGetRequest(200)
+                 .assertThat().body(JsonSchemaValidator.matchesJsonSchemaInClasspath("UsersSchema.json"));
+@@ -34,6 +36,7 @@
+ 
+     @Test
+     @DisplayName("Проверка данных пользователей через DTO")
++    @Step
+     public void checkListUsersDTO() {
+         UsersPage usersPage = checkStatusCodeGet("https://reqres.in/api/users?page=2", 200)
+                     .extract().as(UsersPage.class);
+@@ -49,6 +52,7 @@
+ 
+     @Test
+     @DisplayName("Проверка данных одного пользователя")
++    @Step
+     public void testUserFromResponse() {
+         UserData userData = checkStatusCodeGet("https://reqres.in/api/users/2", 200)
+                 .extract().body().jsonPath().getObject("data", UserData.class);
+@@ -61,6 +65,7 @@
+ 
+    @Test
+    @DisplayName("Проверка данных одного ресурса")
++   @Step
+     public void singleList() {
+         ColorData resource = checkStatusCodeGet("https://reqres.in/api/unknown/2", 200)
+                 .body(JsonSchemaValidator.matchesJsonSchemaInClasspath("ColorSchema.json"))
+@@ -75,6 +80,7 @@
+ 
+     @Test
+     @DisplayName("Проверка отсутствия ресурса")
++    @Step
+     public void singleListNotFound() {
+         checkStatusCodeGet("https://reqres.in/api/unknown/23", 404)
+                 .body(equalTo("{}"));
+@@ -82,6 +88,7 @@
+ 
+     @Test
+     @DisplayName("Проверка отсутствия пользователя")
++    @Step
+     public void userNotFound() {
+         String responseBody = checkStatusCodeGet("https://reqres.in/api/users/22", 404)
+                         .extract()
+@@ -91,6 +98,7 @@
+ 
+     @Test
+     @DisplayName("Создание пользователя через эндпоинт /api/users POST")
++    @Step
+     public void createUser(){
+         People people = new People("morpheus", "leader");
+         PeopleCreater peopleCreater = checkStatusCodePost(people,"https://reqres.in/api/users",201)
+@@ -102,18 +110,20 @@
+ 
+     @Test
+     @DisplayName("Получение списка ресурсов")
++    @Step
+     public void listRecource(){
+         List<UsersPage> usersPageList =  checkStatusCodeGet("https://reqres.in/api/unknown",200)
+                 .extract().jsonPath().getList("data", UsersPage.class);
+         assertNotNull(usersPageList, "Список не должен быть null");
+         assertFalse(usersPageList.isEmpty(), "Список не должен быть пустым");
+-        assertEquals(6, usersPageList.size(), "Ожидалось три элемента в списке");
++        assertEquals(6, usersPageList.size(), "Ожидалось шесть элемента в списке");
+         System.out.println(usersPageList);
+     }
+ 
+ 
+     @Test
+     @DisplayName("Обновление пользователя через PUT")
++    @Step
+     public void putUser(){
+         People people = new People("morpheus","zion resident");
+         checkStatusCodePut(people,"https://reqres.in/api/users/2",200)
+@@ -123,6 +133,7 @@
+ 
+     @Test
+     @DisplayName("Частичное обновление пользователя через PATCH")
++    @Step
+     public void patch(){
+         People people = new People("morpheus","zion resident");
+         checkStatusCodePatch(people,"https://reqres.in/api/users/2",200)
+@@ -132,6 +143,7 @@
+ 
+     @Test
+     @DisplayName("Удаление пользователя")
++    @Step
+     public void deleteUser_thenSuccess() {
+         deleteUser ("https://reqres.in/api/users/2",204)
+                 .body(isEmptyOrNullString());
+@@ -139,6 +151,7 @@
+ 
+     @Test
+     @DisplayName("Регистрация пользователя")
++    @Step
+     public void  registerUser(){
+         String requestBody = "{\"email\": \"eve.holt@reqres.in\", \"password\": \"pistol\"}";
+         postRegister(requestBody,"https://reqres.in/api/register",200)
+@@ -148,6 +161,7 @@
+ 
+     @Test
+     @DisplayName("Ошибка при регистрации пользователя")
++    @Step
+     public void  unsuccesRegisterUser(){
+         String requestBody = "{\"email\": \"sydney@fife\"}";
+         postRegister(requestBody,"https://reqres.in/api/register",400)
+@@ -156,6 +170,7 @@
+ 
+     @Test
+     @DisplayName("Вход пользователя")
++    @Step
+     public void  loginUser(){
+         String requestBody = "{\"email\": \"eve.holt@reqres.in\", \"password\": \"cityslicka\"}";
+         postRegister(requestBody,"https://reqres.in/api/login",200)
+@@ -164,6 +179,7 @@
+ 
+     @Test
+     @DisplayName("Ошибка при входе пользователя")
++    @Step
+     public void  unsuccesLoginUser(){
+         String requestBody = "{\"email\": \"peter@klaven\"}";
+         postRegister(requestBody,"https://reqres.in/api/login",400)
+@@ -173,6 +189,7 @@
+ 
+     @Test
+     @DisplayName("Получение отложенного ответа")
++    @Step
+     public void getDelayedResponse(){
+         UsersPage usersPage = checkStatusCodeGet("https://reqres.in/api/users?delay=3",200)
+                 .extract().as(UsersPage.class);

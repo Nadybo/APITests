@@ -2,6 +2,7 @@ package com.kursach;
 
 
 import com.kursach.base.BaseTest;
+import io.qameta.allure.Step;
 import io.qameta.allure.junit4.DisplayName;
 import io.restassured.module.jsv.JsonSchemaValidator;
 import org.testng.annotations.BeforeClass;
@@ -27,6 +28,7 @@ public class APITests extends BaseTest {
 
     @Test
     @DisplayName("Валидация списка пользователей через схему JSON")
+    @Step
     public void checkListUsersValidate() {
         sendGetRequest(200)
                 .assertThat().body(JsonSchemaValidator.matchesJsonSchemaInClasspath("UsersSchema.json"));
@@ -34,6 +36,7 @@ public class APITests extends BaseTest {
 
     @Test
     @DisplayName("Проверка данных пользователей через DTO")
+    @Step
     public void checkListUsersDTO() {
         UsersPage usersPage = checkStatusCodeGet("https://reqres.in/api/users?page=2", 200)
                     .extract().as(UsersPage.class);
@@ -48,6 +51,7 @@ public class APITests extends BaseTest {
 
     @Test
     @DisplayName("Проверка данных одного пользователя")
+    @Step
     public void testUserFromResponse() {
         UserData userData = checkStatusCodeGet("https://reqres.in/api/users/2", 200)
                 .extract().body().jsonPath().getObject("data", UserData.class);
@@ -60,6 +64,7 @@ public class APITests extends BaseTest {
 
    @Test
    @DisplayName("Проверка данных одного ресурса")
+   @Step
     public void singleList() {
         ColorData resource = checkStatusCodeGet("https://reqres.in/api/unknown/2", 200)
                 .body(JsonSchemaValidator.matchesJsonSchemaInClasspath("ColorSchema.json"))
@@ -74,6 +79,7 @@ public class APITests extends BaseTest {
 
     @Test
     @DisplayName("Проверка отсутствия ресурса")
+    @Step
     public void singleListNotFound() {
         checkStatusCodeGet("https://reqres.in/api/unknown/23", 404)
                 .body(equalTo("{}"));
@@ -81,6 +87,7 @@ public class APITests extends BaseTest {
 
     @Test
     @DisplayName("Проверка отсутствия пользователя")
+    @Step
     public void userNotFound() {
         String responseBody = checkStatusCodeGet("https://reqres.in/api/users/22", 404)
                         .extract()
@@ -90,6 +97,7 @@ public class APITests extends BaseTest {
 
     @Test
     @DisplayName("Создание пользователя через эндпоинт /api/users POST")
+    @Step
     public void createUser(){
         People people = new People("morpheus", "leader");
         PeopleCreater peopleCreater = checkStatusCodePost(people,"https://reqres.in/api/users",201)
@@ -101,18 +109,20 @@ public class APITests extends BaseTest {
 
     @Test
     @DisplayName("Получение списка ресурсов")
+    @Step
     public void listRecource(){
         List<UsersPage> usersPageList =  checkStatusCodeGet("https://reqres.in/api/unknown",200)
                 .extract().jsonPath().getList("data", UsersPage.class);
         assertNotNull(usersPageList, "Список не должен быть null");
         assertFalse(usersPageList.isEmpty(), "Список не должен быть пустым");
-        assertEquals(6, usersPageList.size(), "Ожидалось три элемента в списке");
+        assertEquals(6, usersPageList.size(), "Ожидалось шесть элемента в списке");
         System.out.println(usersPageList);
     }
 
 
     @Test
     @DisplayName("Обновление пользователя через PUT")
+    @Step
     public void putUser(){
         People people = new People("morpheus","zion resident");
         checkStatusCodePut(people,"https://reqres.in/api/users/2",200)
@@ -122,6 +132,7 @@ public class APITests extends BaseTest {
 
     @Test
     @DisplayName("Частичное обновление пользователя через PATCH")
+    @Step
     public void patch(){
         People people = new People("morpheus","zion resident");
         checkStatusCodePatch(people,"https://reqres.in/api/users/2",200)
@@ -131,6 +142,7 @@ public class APITests extends BaseTest {
 
     @Test
     @DisplayName("Удаление пользователя")
+    @Step
     public void deleteUser_thenSuccess() {
         deleteUser ("https://reqres.in/api/users/2",204)
                 .body(isEmptyOrNullString());
@@ -138,6 +150,7 @@ public class APITests extends BaseTest {
 
     @Test
     @DisplayName("Регистрация пользователя")
+    @Step
     public void  registerUser(){
         String requestBody = "{\"email\": \"eve.holt@reqres.in\", \"password\": \"pistol\"}";
         postRegister(requestBody,"https://reqres.in/api/register",200)
@@ -147,6 +160,7 @@ public class APITests extends BaseTest {
 
     @Test
     @DisplayName("Ошибка при регистрации пользователя")
+    @Step
     public void  unsuccesRegisterUser(){
         String requestBody = "{\"email\": \"sydney@fife\"}";
         postRegister(requestBody,"https://reqres.in/api/register",400)
@@ -155,6 +169,7 @@ public class APITests extends BaseTest {
 
     @Test
     @DisplayName("Вход пользователя")
+    @Step
     public void  loginUser(){
         String requestBody = "{\"email\": \"eve.holt@reqres.in\", \"password\": \"cityslicka\"}";
         postRegister(requestBody,"https://reqres.in/api/login",200)
@@ -163,6 +178,7 @@ public class APITests extends BaseTest {
 
     @Test
     @DisplayName("Ошибка при входе пользователя")
+    @Step
     public void  unsuccesLoginUser(){
         String requestBody = "{\"email\": \"peter@klaven\"}";
         postRegister(requestBody,"https://reqres.in/api/login",400)
@@ -172,6 +188,7 @@ public class APITests extends BaseTest {
 
     @Test
     @DisplayName("Получение отложенного ответа")
+    @Step
     public void getDelayedResponse(){
         UsersPage usersPage = checkStatusCodeGet("https://reqres.in/api/users?delay=3",200)
                 .extract().as(UsersPage.class);
