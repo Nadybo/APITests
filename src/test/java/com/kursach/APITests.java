@@ -1,9 +1,11 @@
 package com.kursach;
 
+import com.kursach.base.BaseTest;
+import org.testng.Assert;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -11,28 +13,25 @@ import static org.hamcrest.core.Is.is;
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
 
-public class APITests {
+public class APITests extends BaseTest {
+
+    @BeforeClass
+    public static void setUo(){
+        BaseTest.setUp();
+        requestSpecification.basePath("/users");
+    }
 
     @Test
-    public void task1() {
-        UsersPage usersPage = given()
-                .when()
-                .get("https://reqres.in/api/users?page=2")
-                .then()
-                .log().all()
-                .statusCode(200)
-                .extract().as(UsersPage.class);
-
-        assertEquals(2, usersPage.getPage().intValue(), "Expected page to be 2");
-        assertEquals(2, usersPage.getTotal_pages().intValue(), "Expected total_pages to be 2");
-        assertEquals(12, usersPage.getTotal().intValue(), "Expected total to be 12");
-
-        List<UserData> data = usersPage.getData();
-        List<Integer> ids = data.stream().map(UserData::getId).collect(Collectors.toList());
-        assertEquals(ids.size(), ids.stream().distinct().count(), "Expected IDs to be unique");
-
-        boolean found = data.stream().anyMatch(d -> "Tobias".equals(d.getFirst_name()) && "Funke".equals(d.getLast_name()));
-        assertTrue(found, "Expected to find a user with first_name=Tobias and last_name=Funke");
+    public void checkListUsersDTO() {
+        UsersPage usersPage = checkStatusCodeGet("https://reqres.in/api/users?page=2", 200)
+                    .extract().as(UsersPage.class);
+        Assert.assertEquals(usersPage.getPage().intValue(), 2);
+        Assert.assertEquals(usersPage.getPer_page().intValue(), 6);
+        Assert.assertEquals(usersPage.getTotal().intValue(), 12);
+        Assert.assertEquals(usersPage.getTotal_pages().intValue(), 2);
+        Assert.assertFalse(usersPage.getData().isEmpty());
+        Assert.assertEquals(usersPage.getData().get(2).getFirst_name(), "Tobias");
+        Assert.assertEquals(usersPage.getData().get(2).getLast_name(), "Funke");
     }
 
     @Test

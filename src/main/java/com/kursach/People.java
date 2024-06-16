@@ -1,5 +1,10 @@
 package com.kursach;
 
+import lombok.Getter;
+import lombok.Setter;
+
+@Setter
+@Getter
 public class People {
    private String name;
    private String job;
@@ -9,22 +14,6 @@ public class People {
     public People(String name, String job){
        this.name=name;
        this.job=job;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getJob() {
-        return job;
-    }
-
-    public void setJob(String job) {
-        this.job = job;
     }
 
     @Override
