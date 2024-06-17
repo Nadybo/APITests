@@ -39,8 +39,8 @@ public class DriverManager {
         }
     }
     public void initDriver(){
-        WebDriverManager.edgedriver().setup();
-        driver = new EdgeDriver();
+        WebDriverManager.chromedriver().setup();
+        driver = new ChromeDriver();
     }
 //    private void initDriver() {
 //        System.setProperty("webdriver.chrome.driver", propManager.getProperty(Constatnt.PATH_CHROME_DRIVER_WINDOWS));

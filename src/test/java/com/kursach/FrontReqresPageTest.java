@@ -4,15 +4,16 @@ package com.kursach;
 import com.kursach.managers.DriverManager;
 import com.kursach.managers.ManagerInitiallization;
 import com.kursach.pages.ReqresPage;
-import io.qameta.allure.junit4.DisplayName;
-import org.junit.AfterClass;
-import org.junit.BeforeClass;
-import org.junit.Test;
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
+
 
 public class FrontReqresPageTest {
     private static final DriverManager driverManager = DriverManager.getInstance();
 
-    @BeforeClass
+    @BeforeAll
     public static void beforeClass(){
         ManagerInitiallization.initFramework();
         driverManager.getDriver().get("https://reqres.in/");
@@ -39,7 +40,7 @@ public class FrontReqresPageTest {
                 .clickOnButtonAndCheckAPI("Login - unsuccessful", "post")
                 .clickOnButtonAndCheckAPI("Delayed response", "get");
     }
-    @AfterClass
+    @AfterAll
     public static void after() {
         ManagerInitiallization.quitFramework();
     }

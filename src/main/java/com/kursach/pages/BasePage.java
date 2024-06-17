@@ -5,7 +5,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import com.kursach.managers.DriverManager;
 import io.restassured.http.ContentType;
-import org.junit.Assert;
+import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -45,7 +45,7 @@ public class BasePage {
 
     protected void checkOpenPage(String pageName, WebElement title) {
         waitUntilElementToBeVisible(title);
-        Assert.assertEquals("Заголовок не корректен", pageName, title.getText());
+        Assertions.assertEquals(pageName, title.getText(), "Заголовок не корректен");
     }
 
     protected String get(String request) {
@@ -158,9 +158,9 @@ public class BasePage {
             actualObjectNode.remove("createdAt");
             actualObjectNode.remove("updatedAt");
 
-            Assert.assertEquals("Результат не совпал с результатом API", expectedJson, actualJson);
+            Assertions.assertEquals(expectedJson, actualJson,"Результат не совпал с результатом API");
         } catch (Exception e) {
-            Assert.fail("Ошибка при сравнении ответов: " + e.getMessage());
+            Assertions.fail(e.getMessage() + "Ошибка при сравнении ответов");
         }
     }
 }

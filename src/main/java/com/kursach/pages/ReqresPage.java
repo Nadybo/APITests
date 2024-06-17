@@ -3,7 +3,7 @@ package com.kursach.pages;
 import com.kursach.managers.ManagerPropertiesTest;
 import io.qameta.allure.Step;
 
-import org.junit.Assert;
+import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -47,14 +47,14 @@ public class ReqresPage extends BasePage {
                 moveToElement(button);
                 button.click();
                 waitUntilElementToBeVisible(outputResponse);
-                Assert.assertEquals("Кнопка не активирована", "active", button.getAttribute("class"));
+                Assertions.assertEquals("active", button.getAttribute("class"),"Кнопка не активирована");
                 validateApiResponse(httpMethod, request);
-                Assert.assertEquals("URL запроса не совпадает", request.getAttribute("href"), "https://reqres.in" + urlRequest.getText());
+                Assertions.assertEquals(request.getAttribute("href"), "https://reqres.in" + urlRequest.getText(),"URL запроса не совпадает");
 
                 return this;
             }
         }
-        Assert.fail("Кнопка '" + nameButton + "' не найдена");
+        Assertions.fail("Кнопка '" + nameButton + "' не найдена");
         return this;
     }
 
@@ -66,27 +66,27 @@ public class ReqresPage extends BasePage {
 
         switch (httpMethod.toLowerCase()) {
             case "get":
-                Assert.assertEquals("Ответ API не совпадает", get(requestUrl), responseBody);
-                Assert.assertEquals("Статус код не совпадает", getStatusCode(requestUrl), expectedStatusCode);
+                Assertions.assertEquals(get(requestUrl), responseBody, "API response does not match");
+                Assertions.assertEquals(getStatusCode(requestUrl), expectedStatusCode, "Status code does not match");
                 break;
             case "post":
                 compareResponses(post(requestUrl, requestBody), responseBody);
-                Assert.assertEquals("Статус код не совпадает", postStatusCode(requestUrl, requestBody), expectedStatusCode);
+                Assertions.assertEquals(postStatusCode(requestUrl, requestBody), expectedStatusCode, "Status code does not match");
                 break;
             case "put":
                 compareResponses(put(requestUrl, requestBody), responseBody);
-                Assert.assertEquals("Статус код не совпадает", putStatusCode(requestUrl, requestBody), expectedStatusCode);
+                Assertions.assertEquals(putStatusCode(requestUrl, requestBody), expectedStatusCode, "Status code does not match");
                 break;
             case "patch":
                 compareResponses(patch(requestUrl, requestBody), responseBody);
-                Assert.assertEquals("Статус код не совпадает", patchStatusCode(requestUrl, requestBody), expectedStatusCode);
+                Assertions.assertEquals(patchStatusCode(requestUrl, requestBody), expectedStatusCode, "Status code does not match");
                 break;
             case "delete":
-                Assert.assertEquals("Ответ API не совпадает", delete(requestUrl), responseBody);
-                Assert.assertEquals("Статус код не совпадает", deleteStatusCode(requestUrl), expectedStatusCode);
+                Assertions.assertEquals(delete(requestUrl), responseBody, "API response does not match");
+                Assertions.assertEquals(deleteStatusCode(requestUrl), expectedStatusCode, "Status code does not match");
                 break;
             default:
-                Assert.fail("Некорректный HTTP метод: " + httpMethod);
+                Assertions.fail("Incorrect HTTP method: " + httpMethod);
         }
     }
 }

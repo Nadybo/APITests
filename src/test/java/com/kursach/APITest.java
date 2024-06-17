@@ -3,25 +3,25 @@ package com.kursach;
 
 import com.kursach.base.BaseTest;
 import io.qameta.allure.Step;
-import io.qameta.allure.junit4.DisplayName;
 import io.restassured.module.jsv.JsonSchemaValidator;
-import org.testng.annotations.BeforeClass;
-import org.testng.annotations.Test;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
+
 
 import java.util.List;
-
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
 import static org.hamcrest.Matchers.isEmptyOrNullString;
 import static org.hamcrest.core.IsEqual.equalTo;
-import static org.testng.Assert.*;
+import static org.junit.jupiter.api.Assertions.*;
 
 
-public class APITests extends BaseTest {
+public class APITest extends BaseTest {
 
-    @BeforeClass
-    public static void setUo(){
+    @BeforeAll
+    public static void setUp(){
         BaseTest.setUp();
         requestSpecification.basePath("/users");
     }
@@ -92,7 +92,7 @@ public class APITests extends BaseTest {
         String responseBody = checkStatusCodeGet("https://reqres.in/api/users/22", 404)
                         .extract()
                         .asString();
-        assertEquals("{}", responseBody, "Expected response body to be empty JSON object {}");
+        assertEquals(responseBody,"{}", "Expected response body to be empty JSON object {}" );
     }
 
     @Test
@@ -113,9 +113,9 @@ public class APITests extends BaseTest {
     public void listRecource(){
         List<UsersPage> usersPageList =  checkStatusCodeGet("https://reqres.in/api/unknown",200)
                 .extract().jsonPath().getList("data", UsersPage.class);
-        assertNotNull(usersPageList, "Список не должен быть null");
-        assertFalse(usersPageList.isEmpty(), "Список не должен быть пустым");
-        assertEquals(6, usersPageList.size(), "Ожидалось шесть элемента в списке");
+        assertNotNull(usersPageList,"Список не должен быть null");
+        assertFalse(usersPageList.isEmpty(),"Список не должен быть пустым");
+        assertEquals(6, usersPageList.size(),"Ожидалось шесть элемента в списке");
         System.out.println(usersPageList);
     }
 
@@ -192,7 +192,19 @@ public class APITests extends BaseTest {
     public void getDelayedResponse(){
         UsersPage usersPage = checkStatusCodeGet("https://reqres.in/api/users?delay=3",200)
                 .extract().as(UsersPage.class);
-        assertNotNull(usersPage, "Список не должен быть null");
+        assertNotNull(usersPage,"Список не должен быть null");
+        assertEquals(usersPage.getPage().intValue(), 1);
+        assertEquals(usersPage.getPer_page().intValue(), 6);
+        assertEquals(usersPage.getTotal().intValue(), 12);
+        assertEquals(usersPage.getTotal_pages().intValue(), 2);
+        assertFalse(usersPage.getData().isEmpty());
+        assertEquals(usersPage.getData().get(0).getFirst_name(), "George");
+        assertEquals(usersPage.getData().get(0).getLast_name(), "Bluth");
+        assertEquals(usersPage.getData().get(1).getFirst_name(), "Janet");
+        assertEquals(usersPage.getData().get(1).getLast_name(), "Weaver");
+        assertEquals(usersPage.getData().get(2).getFirst_name(), "Emma");
+        assertEquals(usersPage.getData().get(2).getLast_name(), "Wong");
+        assertEquals(usersPage.getSupport().getText(),"To keep ReqRes free, contributions towards server costs are appreciated!");
         System.out.println(usersPage);
     }
 
